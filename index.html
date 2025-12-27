@@ -1,29 +1,56 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Charset -->
     <meta charset="UTF-8" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
 
     <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO -->
-    <title>Brainy Services Ltd | Data, Security, Animation & Virtual Assistance</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Primary SEO -->
+    <title>Brainy Services Ltd | Your Idea, Amplified. Your Future, Assured.</title>
     <meta
       name="description"
-      content="Brainy Services Ltd delivers premium services in data analysis, cyber security, animation, branding, and virtual assistance."
+      content="Brainy Services Ltd provides premium data analysis, cyber security, animation, branding, and virtual assistance services for modern businesses."
     />
 
-    <!-- Theme -->
+    <!-- Theme Color -->
     <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brainy Services Ltd" />
+    <meta property="og:url" content="https://brainyservices.co.uk/" />
+    <meta
+      property="og:title"
+      content="Brainy Services Ltd — Your Idea, Amplified. Your Future, Assured."
+    />
+    <meta
+      property="og:description"
+      content="Professional data analysis, cyber security, animation, branding, and virtual assistance services."
+    />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Brainy Services Ltd — Your Idea, Amplified."
+    />
+    <meta
+      name="twitter:description"
+      content="Premium business solutions in data, security, animation, and virtual assistance."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
   </head>
 
-  <body class="antialiased">
+  <body class="antialiased bg-white text-gray-900">
     <div id="root"></div>
 
-    <!-- Vite entry -->
+    <!-- Vite / React Entry -->
     <script type="module" src="/src/main.jsx"></script>
 
     <!-- ================= CRISP LIVE CHAT ================= -->
@@ -33,14 +60,11 @@
       (function () {
         const d = document;
         const s = d.createElement("script");
-
         s.src = "https://client.crisp.chat/l.js";
-        s.async = 1;
-
-        d.getElementsByTagName("head")[0].appendChild(s);
+        s.async = true;
+        d.head.appendChild(s);
       })();
     </script>
-    <!-- =================================================== -->
-
+    <!-- ================================================== -->
   </body>
 </html>
