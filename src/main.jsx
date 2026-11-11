@@ -8,6 +8,7 @@ import "./index.css"
 import Home from "./pages/Home"
 import Services from "./pages/Services"
 import ServiceDetail from "./pages/ServiceDetail"
+import Pay from "./pages/Pay"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/pay" element={<Pay />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

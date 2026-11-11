@@ -29,6 +29,7 @@ export default function Home() {
           <nav className="hidden md:flex gap-8 font-medium">
             <a href="#services" className="hover:text-brainy">Services</a>
             <a href="#contact" className="hover:text-brainy">Contact</a>
+            <Link to="/pay" className="hover:text-brainy">Pay Online</Link>
           </nav>
 
           <button
@@ -63,6 +64,7 @@ export default function Home() {
               <nav className="flex flex-col gap-6 text-lg">
                 <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
                 <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+                <Link to="/pay" onClick={() => setMenuOpen(false)}>Pay Online</Link>
                 <button
                   className="bg-brainy text-white py-3 rounded-xl"
                   onClick={() => {
