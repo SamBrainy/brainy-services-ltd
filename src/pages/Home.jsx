@@ -1,93 +1,51 @@
-import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import logo from "../assets/logo.png"
-import { services } from "../data/services"
+import { Helmet } from "react-helmet-async"
+import { Palette, BarChart3, ShoppingBag, LifeBuoy } from "lucide-react"
+import { pillars, services } from "../data/services"
+import ContactForm from "../components/ContactForm"
+import { openChat } from "../lib/chat"
+
+const pillarIcons = {
+  creative: Palette,
+  data: BarChart3,
+  shop: ShoppingBag,
+  support: LifeBuoy,
+}
+
+const steps = [
+  { title: "Tell us your idea", text: "Send a message or chat with us about what you need." },
+  { title: "Get a clear quote", text: "We confirm the scope, price, timeline and number of revisions in writing." },
+  { title: "We create it", text: "We build your work and a person checks it before it reaches you." },
+  { title: "Review and revise", text: "You review the result, request the agreed revisions, and we deliver the final files." },
+]
+
+const reasons = [
+  { title: "Clear scope and pricing", text: "You know what you are getting, when, and for how much, before work begins." },
+  { title: "Human-checked work", text: "We use modern tools, including AI, and a person reviews everything before delivery." },
+  { title: "Honest about AI", text: "We tell you when AI is part of how a service is delivered." },
+  { title: "Built for small teams", text: "Fair prices and friendly support for businesses and creators of any size." },
+]
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false)
-
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-
-      {/* ================= HEADER ================= */}
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b"
-      >
-        <div className="flex items-center justify-between px-6 md:px-10 py-4 max-w-7xl mx-auto">
-
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Brainy Services Ltd Logo" className="h-8 md:h-10" />
-            <span className="text-xl font-bold">Brainy Services Ltd</span>
-          </div>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8 font-medium">
-            <a href="#services" className="hover:text-brainy">Services</a>
-            <a href="#contact" className="hover:text-brainy">Contact</a>
-            <Link to="/pay" className="hover:text-brainy">Pay Online</Link>
-          </nav>
-
-          <button
-            className="hidden md:block bg-brainy text-white px-6 py-2 rounded-xl font-semibold"
-            onClick={() => window.$crisp?.push(["do", "chat:open"])}
-          >
-            Chat With Us
-          </button>
-
-          {/* Mobile Menu Button */}
-          <button onClick={() => setMenuOpen(true)} className="md:hidden">
-            ☰
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ y: -300 }}
-              animate={{ y: 0 }}
-              exit={{ y: -300 }}
-              className="fixed inset-x-0 top-0 bg-white p-6 shadow-xl z-50"
-            >
-              <button
-                className="mb-6 text-xl"
-                onClick={() => setMenuOpen(false)}
-              >
-                ×
-              </button>
-
-              <nav className="flex flex-col gap-6 text-lg">
-                <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-                <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-                <Link to="/pay" onClick={() => setMenuOpen(false)}>Pay Online</Link>
-                <button
-                  className="bg-brainy text-white py-3 rounded-xl"
-                  onClick={() => {
-                    setMenuOpen(false)
-                    window.$crisp?.push(["do", "chat:open"])
-                  }}
-                >
-                  Chat With Us
-                </button>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
+    <>
+      <Helmet>
+        <title>Brainy Services Ltd | Your Idea, Amplified.</title>
+        <meta
+          name="description"
+          content="Brainy Services Ltd is a UK online digital services company offering data and spreadsheet services, branding and design, animation and video, and digital products."
+        />
+      </Helmet>
 
       {/* ================= HERO ================= */}
-      <section className="px-6 md:px-10 py-28 max-w-7xl mx-auto">
+      <section className="px-6 md:px-10 py-24 md:py-32 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-extrabold mb-6">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
             Your Idea, <span className="text-brainy">Amplified</span>.
           </h1>
 
@@ -97,85 +55,117 @@ export default function Home() {
             products.
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/services"
+              className="bg-brainy text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition"
+            >
+              Explore Services
+            </Link>
+            <Link
+              to="/contact"
+              className="border border-brainy text-brainy px-8 py-4 rounded-xl font-semibold hover:bg-brainy hover:text-white transition"
+            >
+              Request a Quote
+            </Link>
             <button
-              className="bg-brainy text-white px-8 py-4 rounded-xl"
-              onClick={() => window.$crisp?.push(["do", "chat:open"])}
+              onClick={openChat}
+              className="px-8 py-4 rounded-xl font-semibold text-gray-700 hover:text-brainy transition"
             >
               Chat With Us
             </button>
-            <a
-              href="#contact"
-              className="border border-brainy text-brainy px-8 py-4 rounded-xl"
-            >
-              Request a Quote
-            </a>
           </div>
         </motion.div>
       </section>
 
-      {/* ================= SERVICES ================= */}
-      <section id="services" className="bg-gray-50 px-6 md:px-10 py-24">
+      {/* ================= PILLARS ================= */}
+      <section className="bg-gray-50 px-6 md:px-10 py-24">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-14">Our Services</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">What we do</h2>
+          <p className="text-center text-gray-600 mb-14 max-w-2xl mx-auto">
+            Four areas, one small team. Pick what you need today and add more as you grow.
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {services.map((service, index) => {
-              const Icon = service.icon
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pillars.map((pillar, index) => {
+              const Icon = pillarIcons[pillar.id]
+              const list = services.filter((s) => s.pillar === pillar.id)
               return (
                 <motion.div
-                  key={service.slug}
+                  key={pillar.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="bg-white p-8 rounded-2xl shadow-md"
                 >
-                  <Link
-                    to={`/services/${service.slug}`}
-                    className="block bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition"
-                  >
-                    <Icon className="w-10 h-10 text-brainy mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {service.description}
-                    </p>
-                  </Link>
+                  <Icon className="w-10 h-10 text-brainy mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">{pillar.title}</h3>
+                  <p className="text-gray-600 mb-4 text-sm">{pillar.blurb}</p>
+                  <ul className="grid gap-1 text-sm">
+                    {list.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          to={`/services/${s.slug}`}
+                          className="text-brainy hover:underline"
+                        >
+                          {s.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               )
             })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/services" className="text-brainy font-semibold hover:underline">
+              See all services →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= HOW IT WORKS ================= */}
+      <section className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-14">How it works</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, i) => (
+            <div key={step.title}>
+              <div className="w-10 h-10 rounded-full bg-brainy text-white font-bold flex items-center justify-center mb-4">
+                {i + 1}
+              </div>
+              <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
+              <p className="text-gray-600 text-sm">{step.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================= WHY BRAINY ================= */}
+      <section className="bg-gray-50 px-6 md:px-10 py-24">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-14">Why Brainy Services</h2>
+          <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {reasons.map((r) => (
+              <div key={r.title} className="bg-white p-6 rounded-2xl shadow-sm">
+                <h3 className="font-semibold mb-2">{r.title}</h3>
+                <p className="text-gray-600 text-sm">{r.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ================= CONTACT ================= */}
       <section id="contact" className="px-6 md:px-10 py-24 max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-10">
-          Let’s Work Together
-        </h2>
-
-        <form
-          action="https://formsubmit.co/brainyservices00@gmail.com"
-          method="POST"
-          className="max-w-2xl mx-auto grid gap-6"
-        >
-          <input type="hidden" name="_captcha" value="false" />
-
-          <input name="name" required placeholder="Your Name" className="border p-4 rounded-xl" />
-          <input name="email" required placeholder="Your Email" className="border p-4 rounded-xl" />
-          <textarea name="message" rows="5" required placeholder="Tell us about your project" className="border p-4 rounded-xl" />
-
-          <button className="bg-black text-white py-4 rounded-xl font-semibold">
-            Submit Request
-          </button>
-        </form>
+        <h2 className="text-4xl font-bold text-center mb-4">Let’s work together</h2>
+        <p className="text-center text-gray-600 mb-10">
+          Tell us about your idea and we will reply with a clear next step.
+        </p>
+        <ContactForm />
       </section>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="text-center py-8 text-gray-500">
-        © {new Date().getFullYear()} Brainy Services Ltd. All rights reserved.
-      </footer>
-    </div>
+    </>
   )
 }
