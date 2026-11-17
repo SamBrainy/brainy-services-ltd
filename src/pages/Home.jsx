@@ -88,13 +88,13 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl font-extrabold mb-6">
-            Your Idea, <span className="text-brainy">Amplified</span>.<br />
-            Your Future, <span className="text-brainy">Assured</span>.
+            Your Idea, <span className="text-brainy">Amplified</span>.
           </h1>
 
           <p className="text-lg text-gray-600 mb-8 max-w-xl">
-            We deliver premium solutions in data analysis, cyber security,
-            animation, branding, and virtual assistance.
+            We help businesses and creators with data and spreadsheets,
+            branding and design, animation and video, and ready-made digital
+            products.
           </p>
 
           <div className="flex gap-4">
