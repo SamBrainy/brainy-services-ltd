@@ -156,6 +156,14 @@ export default function Pay() {
                   </p>
                 )}
 
+                <p className="text-xs text-gray-500">
+                  By paying you agree to our{" "}
+                  <Link to="/terms" className="underline">Terms of Service</Link>{" "}
+                  and{" "}
+                  <Link to="/refunds" className="underline">Refunds and Cancellation</Link>{" "}
+                  policy.
+                </p>
+
                 <button
                   type="submit"
                   disabled={loading}

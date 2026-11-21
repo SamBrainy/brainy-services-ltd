@@ -13,6 +13,10 @@ import Pricing from "./pages/Pricing"
 import About from "./pages/About"
 import Faq from "./pages/Faq"
 import Contact from "./pages/Contact"
+import Terms from "./pages/Terms"
+import Privacy from "./pages/Privacy"
+import Refunds from "./pages/Refunds"
+import Cookies from "./pages/Cookies"
 import NotFound from "./pages/NotFound"
 import Pay from "./pages/Pay"
 
@@ -32,6 +36,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/refunds" element={<Refunds />} />
+            <Route path="/cookies" element={<Cookies />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

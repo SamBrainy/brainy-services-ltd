@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react"
 import logo from "../assets/logo.png"
 import { company } from "../data/company"
 import { openChat } from "../lib/chat"
+import CookieBanner from "./CookieBanner"
 
 const navItems = [
   { to: "/services", label: "Services" },
@@ -144,7 +145,7 @@ export default function Layout() {
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-gray-50 border-t">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 grid gap-10 md:grid-cols-3">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3 mb-3">
               <img src={logo} alt="" className="h-8" />
@@ -165,6 +166,24 @@ export default function Layout() {
               <li><Link to="/faq" className="hover:text-brainy">FAQ</Link></li>
               <li><Link to="/contact" className="hover:text-brainy">Contact</Link></li>
               <li><Link to="/pay" className="hover:text-brainy">Pay online</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="font-semibold mb-3">Legal</h2>
+            <ul className="grid gap-2 text-sm text-gray-600">
+              <li><Link to="/terms" className="hover:text-brainy">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="hover:text-brainy">Privacy Policy</Link></li>
+              <li><Link to="/refunds" className="hover:text-brainy">Refunds and Cancellation</Link></li>
+              <li><Link to="/cookies" className="hover:text-brainy">Cookie Policy</Link></li>
+              <li>
+                <button
+                  className="hover:text-brainy text-left"
+                  onClick={() => window.dispatchEvent(new Event("brainy:open-cookie-settings"))}
+                >
+                  Cookie settings
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -189,6 +208,8 @@ export default function Layout() {
           © {new Date().getFullYear()} {company.name}. All rights reserved.
         </div>
       </footer>
+
+      <CookieBanner />
     </div>
   )
 }

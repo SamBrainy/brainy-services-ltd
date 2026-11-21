@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 // NOTE: This still uses FormSubmit. It will be replaced in Phase 4
 // (own form handler, spam protection, thank-you message).
 export default function ContactForm() {
@@ -30,6 +32,12 @@ export default function ContactForm() {
       <button className="bg-brainy text-white py-4 rounded-xl font-semibold hover:opacity-90 transition">
         Submit request
       </button>
+
+      <p className="text-xs text-gray-500">
+        We use your details only to reply to your enquiry. Your message is sent
+        to us by a form service (FormSubmit). See our{" "}
+        <Link to="/privacy" className="underline">Privacy Policy</Link>.
+      </p>
     </form>
   )
 }
