@@ -44,7 +44,7 @@ const sections = [
     items: [
       "Stripe, to take card payments.",
       "Vercel, which hosts our website.",
-      "FormSubmit, a form service that delivers contact-form messages to our email.",
+      "Resend, an email delivery service that sends contact-form messages to our inbox.",
       "Crisp, which provides live chat, only if you allow chat cookies.",
       "Email, file storage and AI service providers we use to deliver projects, where relevant.",
     ],

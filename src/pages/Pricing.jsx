@@ -68,7 +68,7 @@ export default function Pricing() {
               </ul>
 
               <Link
-                to="/contact"
+                to={`/contact?service=${service.slug}`}
                 className="text-center bg-brainy text-white py-3 rounded-xl font-semibold hover:opacity-90 transition"
               >
                 Request a quote

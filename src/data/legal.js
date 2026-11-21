@@ -4,7 +4,7 @@ import { company } from "./company"
 // Have a qualified professional review the legal pages before you rely on them.
 export const legal = {
   lastUpdated: "21 November 2026",
-  jurisdiction: "United Kingdom",
+  jurisdiction: "England and Wales",
   acceptanceDays: 7, // days to raise concerns after delivery
   fileRetentionDays: 90, // client files deleted this long after project completion
   enquiryRetentionMonths: 12, // enquiries and chat messages kept this long

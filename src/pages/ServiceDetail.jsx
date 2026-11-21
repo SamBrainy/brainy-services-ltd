@@ -83,7 +83,7 @@ export default function ServiceDetail() {
       {/* CTAs */}
       <div className="flex flex-wrap gap-4 mb-16">
         <Link
-          to="/contact"
+          to={`/contact?service=${service.slug}`}
           className="bg-brainy text-white px-8 py-4 rounded-xl font-semibold hover:opacity-90 transition"
         >
           {comingSoon ? "Ask to be notified" : "Request a Quote"}
